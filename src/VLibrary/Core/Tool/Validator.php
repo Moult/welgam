@@ -27,9 +27,12 @@ interface Validator
      *
      * @param string $key  The key to access the input data value
      * @param string $rule not_empty - passes if there is a value
+     *                     regex - passes if it matches the regex in $arg
+     *                     min_length - passes if chars are more than $arg
      *                     max_length - passes if chars are less than $arg
-     *                     ip - passes if valid ip address
      *                     email - passes if valid email address
+     *                     url - passes if it is a valid url
+     *                     upload_not_empty - passes if upload data was sent
      *                     upload_valid - passes if upload data is valid
      *                     upload_type - passes if upload data fits filetypes in $arg array
      *                     upload_size - passes if upload data is less than size in $arg string (eg: 1M, 2KiB, 1GB)
