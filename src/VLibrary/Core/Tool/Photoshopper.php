@@ -23,11 +23,11 @@ interface Photoshopper
     public function setup($source, $destination = NULL);
 
     /**
-     * Returns image width in pixels
+     * Returns image dimensions
      *
-     * @return int
+     * @return array($width, $height) in pixels
      */
-    public function get_width();
+    public function get_dimensions();
 
     /**
      * Resizes an image to a width in pixels, maintaining aspect ratio
@@ -40,6 +40,18 @@ interface Photoshopper
      * @return void
      */
     public function resize_to_width($width);
+
+    /**
+     * Resizes an image to a height in pixels, maintaining aspect ratio
+     *
+     * Example:
+     * $photoshopper->resize_to_height(40);
+     *
+     * @param int $height height in pixels to resize to
+     *
+     * @return void
+     */
+    public function resize_to_height($height);
 
     /**
      * Blurs the image using the Gaussian algorithm
