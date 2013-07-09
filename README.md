@@ -3,6 +3,12 @@
 vlibrary is a minimal jumpstart for small BDD library development with PHPSpec
 and Phing.
 
+## vlibrary-dci
+
+The DCI branch provides useful tool interfaces and exception classes when
+developing in a DCI environment. Be sure to prune what you don't need during the
+project.
+
 # Get started immediately
 
 To begin a fresh project with vlibrary, create your new git repository as usual,
