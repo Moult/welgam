@@ -7,7 +7,7 @@ gain, actually) weight.
 
 Those marked in bold have been implemented:
 
- * Competition add
+ * **Competition add**
  * Competition edit
  * Competition delete
  * Racer add
