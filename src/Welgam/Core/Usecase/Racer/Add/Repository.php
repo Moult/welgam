@@ -22,4 +22,14 @@ interface Repository
      * @return string
      */
     public function get_competition_name($competition_id);
+
+    /**
+     * @return bool
+     */
+    public function does_competition_have_racers($competition_id);
+
+    /**
+     * @return bool
+     */
+    public function does_racer_participate_in_competition($racer_id, $racer_password, $competition_id);
 }

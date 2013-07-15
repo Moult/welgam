@@ -9,15 +9,19 @@ class AddSpec extends ObjectBehavior
 {
     /**
      * @param Welgam\Core\Data\Racer $racer
+     * @param Welgam\Core\Data\Competition $competition
      * @param Welgam\Core\Usecase\Racer\Add\Repository $racer_add
      * @param Welgam\Core\Tool\Emailer $emailer
      * @param Welgam\Core\Tool\Formatter $formatter
      * @param Welgam\Core\Tool\Validator $validator
      */
-    function let($racer, $racer_add, $emailer, $formatter, $validator)
+    function let($racer, $competition, $racer_add, $emailer, $formatter, $validator)
     {
+        $racer->competition = $competition;
+
         $data = array(
-            'racer' => $racer
+            'racer' => $racer,
+            'racer_registrant' => $racer
         );
 
         $repositories = array(
