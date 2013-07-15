@@ -41,6 +41,11 @@ class Submission extends Data\Update
             throw new Exception\Validation($this->validator->errors());
     }
 
+    public function is_reasonable_number($number)
+    {
+        return $number > 0 AND $number <= 500;
+    }
+
     public function submit()
     {
         $this->repository->add_update(

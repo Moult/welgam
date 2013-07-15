@@ -45,6 +45,14 @@ class SubmissionSpec extends ObjectBehavior
             ->duringValidate();
     }
 
+    function it_can_check_for_resonable_numbers()
+    {
+        $this->is_reasonable_number(1)->shouldReturn(TRUE);
+        $this->is_reasonable_number(0)->shouldReturn(FALSE);
+        $this->is_reasonable_number(500)->shouldReturn(TRUE);
+        $this->is_reasonable_number(501)->shouldReturn(FALSE);
+    }
+
     function it_submits($repository)
     {
         $today = date('Ymd', strtotime('today'));
