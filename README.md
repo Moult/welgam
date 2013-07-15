@@ -11,7 +11,7 @@ Those marked in bold have been implemented:
  * **Competition edit**
  * **Competition delete**
  * **Racer add**
- * Racer edit
+ * **Racer edit**
  * Racer delete
  * Racer award
  * Update add
