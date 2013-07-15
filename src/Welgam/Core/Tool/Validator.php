@@ -31,6 +31,7 @@ interface Validator
      *                     min_length - passes if chars are more than $arg
      *                     max_length - passes if chars are less than $arg
      *                     email - passes if valid email address
+     *                     email_domain - passes if it is a valid email domain MX
      *                     url - passes if it is a valid url
      *                     upload_not_empty - passes if upload data was sent
      *                     upload_valid - passes if upload data is valid
