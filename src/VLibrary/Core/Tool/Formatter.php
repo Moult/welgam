@@ -12,10 +12,9 @@ interface Formatter
      * Sets up the formatter with data to use
      *
      * Example:
-     * $data = VLibrary\Core\Data\User;
-     * $formatter->setup($data);
+     * $formatter->setup(['foo' => 'bar']);
      *
-     * @param Data $data A data object
+     * @param array $data Data to format
      *
      * @return void
      */
