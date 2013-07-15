@@ -10,7 +10,7 @@ Those marked in bold have been implemented:
  * **Competition add**
  * **Competition edit**
  * **Competition delete**
- * Racer add
+ * **Racer add**
  * Racer edit
  * Racer delete
  * Racer award
