@@ -9,7 +9,7 @@ use Welgam\Core\Data;
 use Welgam\Core\Tool;
 use Welgam\Core\Exception;
 
-class Submission
+class Submission extends Data\Competition
 {
     public $id;
     public $name;

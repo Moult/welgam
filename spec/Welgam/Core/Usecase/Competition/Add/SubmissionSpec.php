@@ -26,6 +26,11 @@ class SubmissionSpec extends ObjectBehavior
         $this->shouldHaveType('Welgam\Core\Usecase\Competition\Add\Submission');
     }
 
+    function it_is_a_competition()
+    {
+        $this->shouldHaveType('Welgam\Core\Data\Competition');
+    }
+
     function it_can_validate_submissions($validator)
     {
         $validator->setup(array(
