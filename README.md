@@ -9,7 +9,7 @@ Those marked in bold have been implemented:
 
  * **Competition add**
  * **Competition edit**
- * Competition delete
+ * **Competition delete**
  * Racer add
  * Racer edit
  * Racer delete
