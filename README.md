@@ -15,4 +15,4 @@ Those marked in bold have been implemented:
  * **Racer delete**
  * Racer award
  * **Update add**
- * Update delete
+ * **Update delete**
