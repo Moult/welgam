@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\VLibrary\Core\Exception;
+namespace spec\Welgam\Core\Exception;
 
-use PHPSpec2\ObjectBehavior;
+use PhpSpec\ObjectBehavior;
 
-class Validation extends ObjectBehavior
+class ValidationSpec extends ObjectBehavior
 {
     function let()
     {
@@ -13,7 +13,7 @@ class Validation extends ObjectBehavior
 
     function it_should_be_initializable()
     {
-        $this->shouldHaveType('VLibrary\Core\Exception\Validation');
+        $this->shouldHaveType('Welgam\Core\Exception\Validation');
     }
 
     function it_is_an_exception()

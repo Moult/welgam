@@ -4,7 +4,7 @@
  * Full license text in LICENSE file
  */
 
-namespace VLibrary\Core\Tool;
+namespace Welgam\Core\Tool;
 
 interface Photoshopper
 {
