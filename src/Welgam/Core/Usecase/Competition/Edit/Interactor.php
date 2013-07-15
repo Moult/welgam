@@ -19,7 +19,7 @@ class Interactor
 
     public function interact()
     {
-        $this->editor->authorise_participant();
+        $this->editor->authorise();
         $this->submission->validate();
         $this->submission->update();
     }

@@ -35,6 +35,6 @@ class EditorSpec extends ObjectBehavior
     {
         $repository->is_racer_part_of_competition('racer_id', 'racer_password', 'competition_id')->shouldBeCalled()->willReturn(FALSE);
         $this->shouldThrow('Welgam\Core\Exception\Authorisation')
-            ->duringAuthorise_participant('competition_id');
+            ->duringAuthorise();
     }
 }

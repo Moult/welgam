@@ -23,7 +23,7 @@ class Editor extends Data\Racer
         $this->repository = $repository;
     }
 
-    public function authorise_participant()
+    public function authorise()
     {
         if ( ! $this->repository->is_racer_part_of_competition($this->id, $this->password, $this->competition->id))
             throw new Exception\Authorisation('You are not allowed to edit this competition');
