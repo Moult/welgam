@@ -56,8 +56,8 @@ class SubmissionSpec extends ObjectBehavior
     function it_submits($repository)
     {
         $today = date('Ymd', strtotime('today'));
-        $repository->add_update('weight', 'food', $today, 'racer_id')->shouldBeCalled();
-        $this->submit();
+        $repository->add_update('weight', 'food', $today, 'racer_id')->shouldBeCalled()->willReturn('update_id');
+        $this->submit()->shouldReturn('update_id');
     }
 
     function it_gets_the_weight()

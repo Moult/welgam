@@ -48,7 +48,7 @@ class Submission extends Data\Update
 
     public function submit()
     {
-        $this->repository->add_update(
+        return $this->repository->add_update(
             $this->weight,
             $this->food,
             date('Ymd', strtotime('today')),

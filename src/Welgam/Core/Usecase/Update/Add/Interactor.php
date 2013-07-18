@@ -27,14 +27,14 @@ class Interactor
             return;
 
         $this->submission->validate();
-        $this->submission->submit();
+        $submission_id = $this->submission->submit();
 
-        $this->updater->award_attendance_trophy();
+        $this->updater->award_attendance_trophy($submission_id);
         $awards = array(Data\Trophy::ATTENDANCE);
 
         if ($this->updater->is_within_bmi_range($this->submission->get_weight()))
         {
-            $this->updater->award_bmi_trophy();
+            $this->updater->award_bmi_trophy($submission_id);
             $awards[] = Data\Trophy::BMI;
         }
 
@@ -42,19 +42,19 @@ class Interactor
 
         if ($this->updater->has_made_progress($previous_update_weight, $this->submission->get_weight()))
         {
-            $this->updater->award_progress_trophy();
+            $this->updater->award_progress_trophy($submission_id);
             $awards[] = Data\Trophy::PROGRESS;
         }
 
         if ($this->submission->has_food())
         {
-            $this->updater->award_food_trophy();
+            $this->updater->award_food_trophy($submission_id);
             $awards[] = Data\Trophy::FOOD;
         }
 
         if ($previous_update_date === date('Ymd', strtotime('yesterday')))
         {
-            $this->updater->award_combo_trophy();
+            $this->updater->award_combo_trophy($submission_id);
             $awards[] = Data\TROPHY::COMBO;
         }
 
