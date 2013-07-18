@@ -12,18 +12,13 @@ class AwardSpec extends ObjectBehavior
         $this->shouldHaveType('Welgam\Core\Data\Award');
     }
 
-    function it_has_an_id()
-    {
-        $this->id->shouldBe(NULL);
-    }
-
     function it_is_a_type_of_trophy()
     {
         $this->type->shouldBe(NULL);
     }
 
-    function it_belongs_to_a_racer()
+    function it_belongs_to_an_update()
     {
-        $this->racer->shouldBe(NULL);
+        $this->update->shouldBe(NULL);
     }
 }
