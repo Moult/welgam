@@ -58,9 +58,11 @@ class Submission extends Data\Update
 
     public function get_weight()
     {
+        return $this->weight;
     }
 
     public function has_food()
     {
+        return (bool) $this->food;
     }
 }

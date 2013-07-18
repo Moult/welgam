@@ -59,4 +59,14 @@ class SubmissionSpec extends ObjectBehavior
         $repository->add_update('weight', 'food', $today, 'racer_id')->shouldBeCalled();
         $this->submit();
     }
+
+    function it_gets_the_weight()
+    {
+        $this->get_weight()->shouldReturn('weight');
+    }
+
+    function it_checks_whether_or_not_it_has_food()
+    {
+        $this->has_food()->shouldReturn(TRUE);
+    }
 }

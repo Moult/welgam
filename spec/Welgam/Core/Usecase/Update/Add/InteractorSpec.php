@@ -35,7 +35,7 @@ class InteractorSpec extends ObjectBehavior
         $updater->award_bmi_trophy()->shouldBeCalled();
         $yesterday = date('Ymd', strtotime('yesterday'));
         $updater->get_previous_update_date_and_weight()->shouldBeCalled()->willReturn(array($yesterday, 'previous_weight'));
-        $updater->has_made_progress('previous_weight')->shouldBeCalled()->willReturn(TRUE);
+        $updater->has_made_progress('previous_weight', 'weight')->shouldBeCalled()->willReturn(TRUE);
         $updater->award_progress_trophy()->shouldBeCalled();
         $submission->has_food()->shouldBeCalled()->willReturn('food');
         $updater->award_food_trophy()->shouldBeCalled();

@@ -40,7 +40,7 @@ class Interactor
 
         list($previous_update_date, $previous_update_weight) = $this->updater->get_previous_update_date_and_weight();
 
-        if ($this->updater->has_made_progress($previous_update_weight))
+        if ($this->updater->has_made_progress($previous_update_weight, $this->submission->get_weight()))
         {
             $this->updater->award_progress_trophy();
             $awards[] = Data\Trophy::PROGRESS;

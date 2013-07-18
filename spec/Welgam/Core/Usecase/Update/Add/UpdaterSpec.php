@@ -15,6 +15,7 @@ class UpdaterSpec extends ObjectBehavior
     {
         $racer->id = 'id';
         $racer->password = 'password';
+        $repository->get_weight_and_height_and_goal_weight('id')->shouldBeCalled()->willReturn(array(80, 180, 70));
         $this->beConstructedWith($racer, $repository);
     }
 
@@ -40,5 +41,53 @@ class UpdaterSpec extends ObjectBehavior
         $today = date('Ymd', strtotime('today'));
         $repository->does_update_exist($today, 'id')->shouldBeCalled()->willReturn(TRUE);
         $this->has_updated_today()->shouldReturn(TRUE);
+    }
+
+    function it_can_award_the_attendance_trophy_for_updating($repository)
+    {
+        $repository->add_award('attendance', 'id')->shouldBeCalled();
+        $this->award_attendance_trophy();
+    }
+
+    function it_checks_if_is_within_bmi_range()
+    {
+        $this->is_within_bmi_range(50)->shouldReturn(FALSE);
+        $this->is_within_bmi_range(70)->shouldReturn(TRUE);
+    }
+
+    function it_can_award_the_bmi_trophy($repository)
+    {
+        $repository->add_award('bmi', 'id')->shouldBeCalled();
+        $this->award_bmi_trophy();
+    }
+
+    function it_can_get_the_previous_date_and_weight($repository)
+    {
+        $repository->get_previous_update_date_and_weight('id')->shouldBeCalled()->willReturn(array('previous_update_date', 'previous_update_weight'));
+        $this->get_previous_update_date_and_weight()->shouldReturn(array('previous_update_date', 'previous_update_weight'));
+    }
+
+    function it_checks_whether_it_has_made_progress_towards_the_goal_weight()
+    {
+        $this->has_made_progress(80, 79)->shouldReturn(TRUE);
+        $this->has_made_progress(80, 81)->shouldReturn(FALSE);
+    }
+
+    function it_can_award_the_progress_trophy($repository)
+    {
+        $repository->add_award('progress', 'id')->shouldBeCalled();
+        $this->award_progress_trophy();
+    }
+
+    function it_can_award_the_food_trophy($repository)
+    {
+        $repository->add_award('food', 'id')->shouldBeCalled();
+        $this->award_food_trophy();
+    }
+
+    function it_can_award_the_combo_trophy($repository)
+    {
+        $repository->add_award('combo', 'id')->shouldBeCalled();
+        $this->award_combo_trophy();
     }
 }
