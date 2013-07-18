@@ -23,6 +23,7 @@ class InteractorSpec extends ObjectBehavior
     function it_runs_the_interaction_chain($submission)
     {
         $submission->authorise()->shouldBeCalled();
+        $submission->is_today()->shouldBeCalled()->willReturn(TRUE);
         $submission->delete()->shouldBeCalled();
         $this->interact();
     }

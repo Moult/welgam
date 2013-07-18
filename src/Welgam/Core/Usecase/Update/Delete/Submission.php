@@ -33,4 +33,12 @@ class Submission extends Data\Update
     {
         $this->repository->delete_update($this->id);
     }
+
+    public function is_today()
+    {
+        if ($this->repository->get_update_date($this->id) === date('Ymd', strtotime('today')))
+            return TRUE;
+        else
+            return FALSE;
+    }
 }

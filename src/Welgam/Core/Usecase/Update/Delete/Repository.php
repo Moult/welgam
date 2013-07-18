@@ -17,4 +17,9 @@ interface Repository
      * @return void
      */
     public function delete_update($update_id);
+
+    /**
+     * @return int yymmdd
+     */
+    public function get_update_date($update_id);
 }

@@ -43,4 +43,11 @@ class SubmissionSpec extends ObjectBehavior
         $repository->delete_update('id')->shouldBeCalled();
         $this->delete();
     }
+
+    function it_checks_if_the_update_was_made_today($repository)
+    {
+        $today = date('Ymd', strtotime('today'));
+        $repository->get_update_date('id')->shouldBeCalled()->willReturn($today);
+        $this->is_today()->shouldReturn(TRUE);
+    }
 }

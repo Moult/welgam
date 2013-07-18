@@ -18,6 +18,8 @@ class Interactor
     public function interact()
     {
         $this->submission->authorise();
+        if ( ! $this->submission->is_today())
+            return;
         $this->submission->delete();
     }
 }
