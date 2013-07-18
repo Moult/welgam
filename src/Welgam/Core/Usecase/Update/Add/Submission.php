@@ -55,4 +55,12 @@ class Submission extends Data\Update
             $this->racer->id
         );
     }
+
+    public function get_weight()
+    {
+    }
+
+    public function has_food()
+    {
+    }
 }

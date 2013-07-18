@@ -6,6 +6,7 @@
 
 namespace Welgam\Core\Usecase\Update;
 Use Welgam\Core\Usecase\Update\Add\Interactor;
+Use Welgam\Core\Usecase\Update\Add\Competition;
 Use Welgam\Core\Usecase\Update\Add\Updater;
 Use Welgam\Core\Usecase\Update\Add\Submission;
 
@@ -25,8 +26,17 @@ class Add
     public function fetch()
     {
         return new Interactor(
+            $this->get_competition(),
             $this->get_updater(),
             $this->get_submission()
+        );
+    }
+
+    private function get_competition()
+    {
+        return new Competition(
+            $this->data['update']->racer,
+            $this->repositories['update_add']
         );
     }
 

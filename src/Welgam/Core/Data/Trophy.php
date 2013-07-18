@@ -8,7 +8,10 @@ namespace Welgam\Core\Data;
 
 class Trophy
 {
-    const REGULAR = 10;
-    const COMBO2 = 15;
-    const BMI = 20;
+    const ATTENDANCE = 'attendance';
+    const BMI = 'bmi';
+    const LEAD = 'lead';
+    const PROGRESS = 'progress';
+    const FOOD = 'food';
+    const COMBO = 'combo';
 }

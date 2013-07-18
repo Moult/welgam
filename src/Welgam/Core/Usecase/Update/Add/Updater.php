@@ -31,4 +31,36 @@ class Updater extends Data\Racer
     {
         return $this->repository->does_update_exist(date('Ymd', strtotime('today')), $this->id);
     }
+
+    public function award_attendance_trophy()
+    {
+    }
+
+    public function is_within_bmi_range($weight)
+    {
+    }
+
+    public function award_bmi_trophy()
+    {
+    }
+
+    public function get_previous_update_date_and_weight()
+    {
+    }
+
+    public function has_made_progress($past_weight)
+    {
+    }
+
+    public function award_progress_trophy()
+    {
+    }
+
+    public function award_food_trophy()
+    {
+    }
+
+    public function award_combo_trophy()
+    {
+    }
 }
