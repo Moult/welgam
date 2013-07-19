@@ -39,8 +39,10 @@ class SubmissionSpec extends ObjectBehavior
             'end_date' => 'end_date'
         ))->shouldBeCalled();
         $validator->rule('name', 'not_empty')->shouldBeCalled();
-        $validator->callback('start_date', array($this, 'is_not_in_the_past'), array('start_date'))->shouldBeCalled();
-        $validator->callback('end_date', array($this, 'is_after_start_date'), array('end_date', 'start_date'))->shouldBeCalled();
+        $validator->rule('start_date', 'not_empty')->shouldBeCalled();
+        $validator->rule('end_date', 'not_empty')->shouldBeCalled();
+        $validator->callback('start_date', array($this, 'is_not_in_the_past'))->shouldBeCalled();
+        $validator->callback('end_date', array($this, 'is_after_start_date'), array('start_date'))->shouldBeCalled();
         $validator->check()->shouldBeCalled()->willReturn(FALSE);
         $validator->errors()->shouldBeCalled()->willReturn(array('name', 'start_date', 'end_date'));
         $this->shouldThrow('Welgam\Core\Exception\Validation')

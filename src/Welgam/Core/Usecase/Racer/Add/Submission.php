@@ -52,32 +52,31 @@ class Submission extends Data\Racer
             'competition_id' => $this->competition->id
         ));
         $this->validator->rule('name', 'not_empty');
+        $this->validator->rule('email', 'not_empty');
+        $this->validator->rule('weight', 'not_empty');
+        $this->validator->rule('height', 'not_empty');
+        $this->validator->rule('goal_weight', 'not_empty');
         $this->validator->rule('email', 'email');
         $this->validator->rule('email', 'email_domain');
         $this->validator->callback(
             'height',
-            array($this, 'is_reasonable_number'),
-            array('height')
+            array($this, 'is_reasonable_number')
         );
         $this->validator->callback(
             'weight',
-            array($this, 'is_reasonable_number'),
-            array('weight')
+            array($this, 'is_reasonable_number')
         );
         $this->validator->callback(
             'race',
-            array($this, 'is_valid_race'),
-            array('race')
+            array($this, 'is_valid_race')
         );
         $this->validator->callback(
             'goal_weight',
-            array($this, 'is_reasonable_number'),
-            array('goal_weight')
+            array($this, 'is_reasonable_number')
         );
         $this->validator->callback(
             'competition_id',
-            array($this, 'is_existing_competition'),
-            array('competition_id')
+            array($this, 'is_existing_competition')
         );
         if ( ! $this->validator->check())
             throw new Exception\Validation($this->validator->errors());
@@ -135,8 +134,18 @@ class Submission extends Data\Racer
         ));
 
         $this->emailer->set_to($this->email);
-        $this->emailer->set_subject($this->formatter->format('email_racer_add_subject'));
-        $this->emailer->set_body($this->formatter->format('email_racer_add_body'));
+        $this->emailer->set_subject($this->formatter->format('Email_Racer_Add_Subject'));
+        $this->emailer->set_body($this->formatter->format('Email_Racer_Add_Body'));
         $this->emailer->send();
+    }
+
+    public function get_id()
+    {
+        return $this->id;
+    }
+
+    public function get_password()
+    {
+        return $this->password;
     }
 }

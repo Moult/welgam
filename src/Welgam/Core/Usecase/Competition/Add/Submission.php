@@ -37,15 +37,16 @@ class Submission extends Data\Competition
             'end_date' => $this->end_date
         ));
         $this->validator->rule('name', 'not_empty');
+        $this->validator->rule('start_date', 'not_empty');
+        $this->validator->rule('end_date', 'not_empty');
         $this->validator->callback(
             'start_date',
-            array($this, 'is_not_in_the_past'),
-            array('start_date')
+            array($this, 'is_not_in_the_past')
         );
         $this->validator->callback(
             'end_date',
             array($this, 'is_after_start_date'),
-            array('end_date', 'start_date')
+            array('start_date')
         );
 
         if ( ! $this->validator->check())

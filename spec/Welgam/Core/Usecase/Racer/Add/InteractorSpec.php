@@ -30,6 +30,8 @@ class InteractorSpec extends ObjectBehavior
         $submission->generate_password()->shouldBeCalled();
         $submission->add()->shouldBeCalled();
         $submission->notify()->shouldBeCalled();
-        $this->interact();
+        $submission->get_id()->shouldBeCalled()->willReturn('submission_id');
+        $submission->get_password()->shouldBeCalled()->willReturn('submission_password');
+        $this->interact()->shouldReturn(array('submission_id', 'submission_password'));
     }
 }

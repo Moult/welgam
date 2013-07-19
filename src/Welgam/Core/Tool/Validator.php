@@ -56,7 +56,7 @@ interface Validator
      *                         the callback function
      * @return void
      */
-    public function callback($key, array $function, array $args);
+    public function callback($key, array $function, array $args = array());
 
     /**
      * Runs all of the added rules and callbacks, logging whether or not there

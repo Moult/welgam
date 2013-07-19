@@ -29,5 +29,6 @@ class Interactor
         $this->submission->generate_password();
         $this->submission->add();
         $this->submission->notify();
+        return array($this->submission->get_id(), $this->submission->get_password());
     }
 }

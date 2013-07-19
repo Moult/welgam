@@ -52,13 +52,17 @@ class SubmissionSpec extends ObjectBehavior
             'competition_id' => 'competition_id'
         ))->shouldBeCalled();
         $validator->rule('name', 'not_empty')->shouldBeCalled();
+        $validator->rule('email', 'not_empty')->shouldBeCalled();
+        $validator->rule('weight', 'not_empty')->shouldBeCalled();
+        $validator->rule('height', 'not_empty')->shouldBeCalled();
+        $validator->rule('goal_weight', 'not_empty')->shouldBeCalled();
         $validator->rule('email', 'email')->shouldBeCalled();
         $validator->rule('email', 'email_domain')->shouldBeCalled();
-        $validator->callback('height', array($this, 'is_reasonable_number'), array('height'))->shouldBeCalled();
-        $validator->callback('weight', array($this, 'is_reasonable_number'), array('weight'))->shouldBeCalled();
-        $validator->callback('race', array($this, 'is_valid_race'), array('race'))->shouldBeCalled();
-        $validator->callback('goal_weight', array($this, 'is_reasonable_number'), array('goal_weight'))->shouldBeCalled();
-        $validator->callback('competition_id', array($this, 'is_existing_competition'), array('competition_id'))->shouldBeCalled();
+        $validator->callback('height', array($this, 'is_reasonable_number'))->shouldBeCalled();
+        $validator->callback('weight', array($this, 'is_reasonable_number'))->shouldBeCalled();
+        $validator->callback('race', array($this, 'is_valid_race'))->shouldBeCalled();
+        $validator->callback('goal_weight', array($this, 'is_reasonable_number'))->shouldBeCalled();
+        $validator->callback('competition_id', array($this, 'is_existing_competition'))->shouldBeCalled();
         $validator->check()->shouldBeCalled()->willReturn(FALSE);
         $validator->errors()->shouldBeCalled()->willReturn(array());
         $this->shouldThrow('Welgam\Core\Exception\Validation')
@@ -117,8 +121,8 @@ class SubmissionSpec extends ObjectBehavior
             'competition_id' => 'competition_id',
             'competition_name' => 'competition_name'
         ))->shouldBeCalled();
-        $formatter->format('email_racer_add_subject')->shouldBeCalled()->willReturn('email_subject');
-        $formatter->format('email_racer_add_body')->shouldBeCalled()->willReturn('email_body');
+        $formatter->format('Email_Racer_Add_Subject')->shouldBeCalled()->willReturn('email_subject');
+        $formatter->format('Email_Racer_Add_Body')->shouldBeCalled()->willReturn('email_body');
         $emailer->set_to('email')->shouldBeCalled();
         $emailer->set_subject('email_subject')->shouldBeCalled();
         $emailer->set_body('email_body')->shouldBeCalled();
@@ -126,5 +130,19 @@ class SubmissionSpec extends ObjectBehavior
 
         $this->add();
         $this->notify();
+    }
+
+    function it_can_get_id($repository)
+    {
+
+        $repository->add_racer('name', NULL, 'email', 'height', 'weight', 'male', 'race', 'goal_weight', 'competition_id')->shouldBeCalled()->willReturn('racer_id');
+        $this->add();
+        $this->get_id()->shouldReturn('racer_id');
+    }
+
+    function it_can_get_password()
+    {
+        $this->generate_password();
+        $this->get_password()->shouldNotBe(NULL);
     }
 }
