@@ -32,4 +32,9 @@ class Competition
      * @var int yyyymmdd
      */
     public $end_date;
+
+    /**
+     * @var string
+     */
+    public $stake;
 }

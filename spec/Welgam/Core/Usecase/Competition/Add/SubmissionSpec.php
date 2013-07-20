@@ -18,6 +18,7 @@ class SubmissionSpec extends ObjectBehavior
         $competition->private = 'private';
         $competition->start_date = 'start_date';
         $competition->end_date = 'end_date';
+        $competition->stake = 'stake';
         $this->beConstructedWith($competition, $repository, $validator);
     }
 
@@ -36,11 +37,13 @@ class SubmissionSpec extends ObjectBehavior
         $validator->setup(array(
             'name' => 'name',
             'start_date' => 'start_date',
-            'end_date' => 'end_date'
+            'end_date' => 'end_date',
+            'stake' => 'stake'
         ))->shouldBeCalled();
         $validator->rule('name', 'not_empty')->shouldBeCalled();
         $validator->rule('start_date', 'not_empty')->shouldBeCalled();
         $validator->rule('end_date', 'not_empty')->shouldBeCalled();
+        $validator->rule('stake', 'not_empty')->shouldBeCalled();
         $validator->callback('start_date', array($this, 'is_not_in_the_past'))->shouldBeCalled();
         $validator->callback('end_date', array($this, 'is_after_start_date'), array('start_date'))->shouldBeCalled();
         $validator->check()->shouldBeCalled()->willReturn(FALSE);
@@ -77,7 +80,7 @@ class SubmissionSpec extends ObjectBehavior
 
     function it_can_add_submissions($repository)
     {
-        $repository->add_competition('name', 'private', 'start_date', 'end_date')->shouldBeCalled()->willReturn('competition_id');
+        $repository->add_competition('name', 'private', 'start_date', 'end_date', 'stake')->shouldBeCalled()->willReturn('competition_id');
         $this->add();
         $this->get_id()->shouldreturn('competition_id');
     }

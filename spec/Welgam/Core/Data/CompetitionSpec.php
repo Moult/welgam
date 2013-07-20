@@ -36,4 +36,9 @@ class CompetitionSpec extends ObjectBehavior
     {
         $this->end_date->shouldBe(NULL);
     }
+
+    function it_has_a_stake()
+    {
+        $this->stake->shouldBe(NULL);
+    }
 }

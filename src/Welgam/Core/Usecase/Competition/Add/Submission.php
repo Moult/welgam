@@ -16,6 +16,7 @@ class Submission extends Data\Competition
     public $private;
     public $start_date;
     public $end_date;
+    public $stake;
     private $repository;
     private $validator;
 
@@ -25,6 +26,7 @@ class Submission extends Data\Competition
         $this->private = $competition->private;
         $this->start_date = $competition->start_date;
         $this->end_date = $competition->end_date;
+        $this->stake = $competition->stake;
         $this->repository = $repository;
         $this->validator = $validator;
     }
@@ -34,11 +36,13 @@ class Submission extends Data\Competition
         $this->validator->setup(array(
             'name' => $this->name,
             'start_date' => $this->start_date,
-            'end_date' => $this->end_date
+            'end_date' => $this->end_date,
+            'stake' => $this->stake
         ));
         $this->validator->rule('name', 'not_empty');
         $this->validator->rule('start_date', 'not_empty');
         $this->validator->rule('end_date', 'not_empty');
+        $this->validator->rule('stake', 'not_empty');
         $this->validator->callback(
             'start_date',
             array($this, 'is_not_in_the_past')
@@ -75,7 +79,8 @@ class Submission extends Data\Competition
             $this->name,
             $this->private,
             $this->start_date,
-            $this->end_date
+            $this->end_date,
+            $this->stake
         );
     }
 

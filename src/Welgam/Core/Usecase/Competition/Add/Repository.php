@@ -11,5 +11,5 @@ interface Repository
     /**
      * @return int Unique ID of saved competition
      */
-    public function add_competition($name, $private, $start_date, $end_date);
+    public function add_competition($name, $private, $start_date, $end_date, $stake);
 }
