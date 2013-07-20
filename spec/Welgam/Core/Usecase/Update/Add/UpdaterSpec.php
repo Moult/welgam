@@ -45,8 +45,8 @@ class UpdaterSpec extends ObjectBehavior
 
     function it_can_award_the_attendance_trophy_for_updating($repository)
     {
-        $repository->add_award('attendance', 'id')->shouldBeCalled();
-        $this->award_attendance_trophy();
+        $repository->add_award('attendance', 'submission_id')->shouldBeCalled();
+        $this->award_attendance_trophy('submission_id');
     }
 
     function it_checks_if_is_within_bmi_range()
@@ -57,8 +57,8 @@ class UpdaterSpec extends ObjectBehavior
 
     function it_can_award_the_bmi_trophy($repository)
     {
-        $repository->add_award('bmi', 'id')->shouldBeCalled();
-        $this->award_bmi_trophy();
+        $repository->add_award('bmi', 'submission_id')->shouldBeCalled();
+        $this->award_bmi_trophy('submission_id');
     }
 
     function it_can_get_the_previous_date_and_weight($repository)
@@ -75,19 +75,19 @@ class UpdaterSpec extends ObjectBehavior
 
     function it_can_award_the_progress_trophy($repository)
     {
-        $repository->add_award('progress', 'id')->shouldBeCalled();
-        $this->award_progress_trophy();
+        $repository->add_award('progress', 'submission_id')->shouldBeCalled();
+        $this->award_progress_trophy('submission_id');
     }
 
     function it_can_award_the_food_trophy($repository)
     {
-        $repository->add_award('food', 'id')->shouldBeCalled();
-        $this->award_food_trophy();
+        $repository->add_award('food', 'submission_id')->shouldBeCalled();
+        $this->award_food_trophy('submission_id');
     }
 
     function it_can_award_the_combo_trophy($repository)
     {
-        $repository->add_award('combo', 'id')->shouldBeCalled();
-        $this->award_combo_trophy();
+        $repository->add_award('combo', 'submission_id')->shouldBeCalled();
+        $this->award_combo_trophy('submission_id');
     }
 }

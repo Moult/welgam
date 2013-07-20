@@ -25,7 +25,7 @@ class Competition extends Data\Competition
     public function is_running()
     {
         $today = date('Ymd', strtotime('today'));
-        if ($today > $this->start_date AND $today < $this->end_date)
+        if ($today >= $this->start_date AND $today < $this->end_date)
             return TRUE;
         else
             return FALSE;

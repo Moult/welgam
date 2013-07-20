@@ -19,7 +19,7 @@ interface Repository
     public function does_update_exist($update_date, $racer_id);
 
     /**
-     * @return void
+     * @return int Unique ID of update
      */
     public function add_update($update_date, $update_food, $update_date, $racer_id);
 

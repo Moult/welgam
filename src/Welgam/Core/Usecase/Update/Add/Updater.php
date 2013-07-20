@@ -36,9 +36,9 @@ class Updater extends Data\Racer
         return $this->repository->does_update_exist(date('Ymd', strtotime('today')), $this->id);
     }
 
-    public function award_attendance_trophy()
+    public function award_attendance_trophy($submission_id)
     {
-        $this->repository->add_award(Data\Trophy::ATTENDANCE, $this->id);
+        $this->repository->add_award(Data\Trophy::ATTENDANCE, $submission_id);
     }
 
     public function is_within_bmi_range($weight)
@@ -51,9 +51,9 @@ class Updater extends Data\Racer
             return FALSE;
     }
 
-    public function award_bmi_trophy()
+    public function award_bmi_trophy($submission_id)
     {
-        $this->repository->add_award(Data\Trophy::BMI, $this->id);
+        $this->repository->add_award(Data\Trophy::BMI, $submission_id);
     }
 
     public function get_previous_update_date_and_weight()
@@ -70,18 +70,18 @@ class Updater extends Data\Racer
             return FALSE;
     }
 
-    public function award_progress_trophy()
+    public function award_progress_trophy($submission_id)
     {
-        $this->repository->add_award(Data\Trophy::PROGRESS, $this->id);
+        $this->repository->add_award(Data\Trophy::PROGRESS, $submission_id);
     }
 
-    public function award_food_trophy()
+    public function award_food_trophy($submission_id)
     {
-        $this->repository->add_award(Data\Trophy::FOOD, $this->id);
+        $this->repository->add_award(Data\Trophy::FOOD, $submission_id);
     }
 
-    public function award_combo_trophy()
+    public function award_combo_trophy($submission_id)
     {
-        $this->repository->add_award(Data\Trophy::COMBO, $this->id);
+        $this->repository->add_award(Data\Trophy::COMBO, $submission_id);
     }
 }
