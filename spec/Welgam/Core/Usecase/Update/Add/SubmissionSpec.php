@@ -38,7 +38,7 @@ class SubmissionSpec extends ObjectBehavior
             'weight' => 'weight'
         ))->shouldBeCalled();
         $validator->rule('weight', 'not_empty')->shouldBeCalled();
-        $validator->callback('weight', array($this, 'is_reasonable_number'), array('weight'))->shouldBeCalled();
+        $validator->callback('weight', array($this, 'is_reasonable_number'))->shouldBeCalled();
         $validator->check()->shouldBeCalled()->willReturn(FALSE);
         $validator->errors()->shouldBeCalled()->willReturn(array());
         $this->shouldThrow('Welgam\Core\Exception\Validation')

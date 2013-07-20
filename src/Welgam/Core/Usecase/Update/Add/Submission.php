@@ -34,8 +34,7 @@ class Submission extends Data\Update
         $this->validator->rule('weight', 'not_empty');
         $this->validator->callback(
             'weight',
-            array($this, 'is_reasonable_number'),
-            array('weight')
+            array($this, 'is_reasonable_number')
         );
         if ( ! $this->validator->check())
             throw new Exception\Validation($this->validator->errors());
