@@ -5,14 +5,12 @@ gain, actually) weight.
 
 ## Usecases supported
 
-Those marked in bold have been implemented:
-
- * **Competition add**
- * **Competition edit**
- * **Competition delete**
- * **Racer add**
- * **Racer edit**
- * **Racer delete**
- * Racer award
- * **Update add**
- * **Update delete**
+ * Competition add
+ * Competition edit
+ * Competition delete
+ * Competition notify
+ * Racer add
+ * Racer edit
+ * Racer delete
+ * Update add
+ * Update delete
