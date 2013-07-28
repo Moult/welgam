@@ -12,6 +12,7 @@ gain, actually) weight.
  * Racer add
  * Racer edit
  * Racer delete
+ * Racer remind
  * Update add
  * Update delete
 
