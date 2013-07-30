@@ -53,10 +53,10 @@ class GuestSpec extends ObjectBehavior
 
     function it_can_notify_the_racer_about_all_their_competition_urls($repository, $emailer, $formatter)
     {
-        $repository->get_competition_names_and_urls_which_racer_is_participating_in('email')->shouldBeCalled()->willReturn(array(array('name' => 'name', 'url' => 'url')));
+        $repository->get_access_details_of_competitions('email')->shouldBeCalled()->willReturn(array(array('competition_name' => 'competition_name', 'competition_id' => 'competition_id', 'racer_id', 'racer_password' => 'racer_password')));
         $formatter->setup(array(
             'email' => 'email',
-            'competitions' => array(array('name' => 'name', 'url' => 'url'))
+            'competitions' => array(array('competition_name' => 'competition_name', 'competition_id' => 'competition_id', 'racer_id', 'racer_password' => 'racer_password'))
         ))->shouldBeCalled();
         $formatter->format('Email_Racer_Remind_Subject')->shouldBeCalled()->willReturn('email_subject');
         $formatter->format('Email_Racer_Remind_Body')->shouldBeCalled()->willReturn('email_body');

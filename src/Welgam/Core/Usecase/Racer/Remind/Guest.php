@@ -48,7 +48,7 @@ class Guest extends Data\Racer
     {
         $this->formatter->setup(array(
             'email' => $this->email,
-            'competitions' => $this->repository->get_competition_names_and_urls_which_racer_is_participating_in($this->email)
+            'competitions' => $this->repository->get_access_details_of_competitions($this->email)
         ));
         $this->emailer->set_to(array($this->email => 'WeightRace Participant'));
         $this->emailer->set_subject($this->formatter->format('Email_Racer_Remind_Subject'));

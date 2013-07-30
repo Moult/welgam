@@ -15,9 +15,14 @@ interface Repository
 
     /**
      * @return array(
-     *             array('name' => $competition1_name, 'url' => $competition1_url),
+     *             array(
+     *                 'competition_name' => $competition1_name,
+     *                 'competition_id' => $competition1_id,
+     *                 'racer_id' => $racer_id,
+     *                 'racer_password' => $racer_password
+     *             ),
      *             // etc
      *         )
      */
-    public function get_competition_names_and_urls_which_racer_is_participating_in($email);
+    public function get_access_details_of_competitions($email);
 }
