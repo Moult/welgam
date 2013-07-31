@@ -58,6 +58,12 @@ class Interactor
             $awards[] = Data\TROPHY::COMBO;
         }
 
+        if ($this->updater->is_on_target($this->submission->get_weight()))
+        {
+            $this->updater->award_lead_trophy($submission_id);
+            $awards[] = Data\TROPHY::LEAD;
+        }
+
         return $awards;
     }
 }

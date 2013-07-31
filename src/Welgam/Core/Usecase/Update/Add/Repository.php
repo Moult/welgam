@@ -42,4 +42,9 @@ interface Repository
      * @return array($update_date, $update_weight)
      */
     public function get_previous_update_date_and_weight($racer_id);
+
+    /**
+     * @return array($start_date_yyyymmdd, $end_date_yyyymmdd)
+     */
+    public function get_competition_start_and_end_date($racer_id);
 }

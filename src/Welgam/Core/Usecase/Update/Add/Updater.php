@@ -84,4 +84,27 @@ class Updater extends Data\Racer
     {
         $this->repository->add_award(Data\Trophy::COMBO, $submission_id);
     }
+
+    public function is_on_target($todays_weight)
+    {
+        list($start_date_yyyymmdd, $end_date_yyyymmdd) = $this->repository->get_competition_start_and_end_date($this->id);
+
+        $start_date = new \DateTime(substr($start_date_yyyymmdd, 0, 4).'-'.substr($start_date_yyyymmdd, 4, 2).'-'.substr($start_date_yyyymmdd, 6));
+        $end_date = new \DateTime(substr($end_date_yyyymmdd, 0, 4).'-'.substr($end_date_yyyymmdd, 4, 2).'-'.substr($end_date_yyyymmdd, 6));
+        $today = new \DateTime(date('Y-m-d', strtotime('today')));
+        $total_duration = $end_date->diff($start_date)->days;
+        $elapsed_duration = $today->diff($start_date)->days;
+
+        $target_weight = (($elapsed_duration / $total_duration) * ($this->goal_weight - $this->weight)) + $this->weight;
+
+        if ($this->goal_weight < $this->weight)
+            return $todays_weight <= $target_weight;
+        else
+            return $todays_weight >= $target_weight;
+    }
+
+    public function award_lead_trophy($submission_id)
+    {
+        $this->repository->add_award(Data\Trophy::LEAD, $submission_id);
+    }
 }

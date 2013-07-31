@@ -40,6 +40,8 @@ class InteractorSpec extends ObjectBehavior
         $submission->has_food()->shouldBeCalled()->willReturn('food');
         $updater->award_food_trophy('submission_id')->shouldBeCalled();
         $updater->award_combo_trophy('submission_id')->shouldBeCalled();
-        $this->interact()->shouldReturn(array('attendance', 'bmi', 'progress', 'food', 'combo'));
+        $updater->is_on_target('weight')->shouldBeCalled()->willReturn(TRUE);
+        $updater->award_lead_trophy('submission_id')->shouldBeCalled();
+        $this->interact()->shouldReturn(array('attendance', 'bmi', 'progress', 'food', 'combo', 'lead'));
     }
 }

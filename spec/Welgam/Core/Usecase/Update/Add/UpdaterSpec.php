@@ -73,6 +73,16 @@ class UpdaterSpec extends ObjectBehavior
         $this->has_made_progress(80, 81)->shouldReturn(FALSE);
     }
 
+    function it_checks_whether_or_not_the_updater_is_on_target_towards_the_goal($repository)
+    {
+        $today_minus_ten_days = date('Ymd', strtotime('-10 day'));
+        $today_plus_ten_days = date('Ymd', strtotime('+10 day'));
+        $repository->get_competition_start_and_end_date('id')->shouldBeCalled()->willReturn(array($today_minus_ten_days, $today_plus_ten_days));
+        $this->is_on_target(73)->shouldReturn(TRUE);
+        $this->is_on_target(77)->shouldReturn(FALSE);
+        $this->is_on_target(75)->shouldReturn(TRUE);
+    }
+
     function it_can_award_the_progress_trophy($repository)
     {
         $repository->add_award('progress', 'submission_id')->shouldBeCalled();
@@ -89,5 +99,11 @@ class UpdaterSpec extends ObjectBehavior
     {
         $repository->add_award('combo', 'submission_id')->shouldBeCalled();
         $this->award_combo_trophy('submission_id');
+    }
+
+    function it_can_award_the_lead_trophy($repository)
+    {
+        $repository->add_award('lead', 'submission_id')->shouldBeCalled();
+        $this->award_lead_trophy('submission_id');
     }
 }
